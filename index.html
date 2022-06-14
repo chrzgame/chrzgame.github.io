@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>	
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<style>
+	.wrapper {
+	  display: grid;
+	  grid-template-columns: auto;
+	  grid-gap: 10px;
+	  
+	  padding: 10px;
+	}
+	.box {
+	  text-align: center;
+	}
+	.title {margin:auto auto;font: 40px VT323; color:rgb(243,243,21);margin-bottom:20px;width:80%;}
+	.title1 {margin:auto auto;font: 40px VT323; color:rgb(252,90,184);margin-bottom:20px;width:80%;}
+	.title2 {margin:auto auto;font: 40px VT323; color:rgb(13,50,252);margin-bottom:20px;width:80%;}
+	.title3 {margin:auto auto;font: 40px VT323; color:rgb(13,213,252);margin-bottom:20px;width:80%;}
+	.cnt {margin:auto auto;font: 30px VT323; color:white;width:80%;}
+	.desc {margin:auto auto; width:80%; border-bottom: white 2px solid;padding-bottom:10px;}
+	.box {padding:10px 0;}
+	.hero {color:yellow;}
+	.shadow {color:red;}
+	.ambush{color:brown;}
+	.prof{color:pink;}
+	.happy{color:purple;}
+	
+	
+	video {padding:20px;}
+	a {text-decoration:none;}
+	a:link {color:#0F6;}
+	a:visited {color:#0F6;}
+	a:hover {color:#fb0;}
+	table{margin:auto;padding-top:50px;}
+	.info {font: 20px VT323; color:white;text-align:left;}
+	.listleft {text-align:left;}
+	.play{border:solid green 3px ;border-radius:10px;padding:5px;}
+	
+	
+</style>	
+</head>
+<body style="margin:0;background:#000;" onload="init()">	
+<canvas style="background:#000;padding:2px;margin:auto;display:block;" id="board"></canvas>	  	
+<div class="desc" style="color:white;font: 40px VT323; text-align:center;"> Retrogaming on the Cardano Blockchain<br>by <a class="goc" href="https://twitter.com/gamezonchain">@gamezonchain</a></div>
+
+<div class="wrapper">
+  <div class="box">
+	  <div class="title"> What is CHRZ?</div>
+	  <div class="cnt"> CHRZ is a retrogame that fully lives on the Cardano blockchain without the need of resorting to external hosting services (e.g., IPFS, arweave). Just 16kb of metadata: an <a  href="https://en.wikipedia.org/wiki/Impossible_bottle">impossible bottle</a>, crafted with love and passion for coding, that includes animations, synthesized sound effects, touch and keyboard controls, and -last but not least- a lot of funny Unicode characters. 
+	  <video style="display:block; margin:auto" width="80%" autoplay muted loop controls>
+		  <source src="./chrzvideo.mp4" type="video/mp4">
+	  </video>	  
+	  </div>
+  </div>
+  	    	    
+<div class="box">
+  <div class="title2"> CHRZ anatomy</div>
+  <div class="cnt"> 
+  <p>One <span class="hero">HERO</span> (you!) and four enemies. Each enemy has got his own personality.</p>
+  <ul class="listleft">
+	  <li> <span class="shadow">SHADOWMAN</span> aggressively chases <span class="hero">HERO</span> everywhere.</li>
+	  <li> <span class="ambush">AMBUSHMAN</span> tries to get ahead of <span class="hero">HERO</span> to ambush him.</li>
+	  <li> <span class="prof">THE PROFESSOR</span> uses complex formulas to try to trap <span class="hero">HERO</span>. Nonetheless his strategy is often ineffective.</li>
+	  <li> <span class="happy">HAPPY STONER</span> is not very hostile:  when close enough to <span class="hero">HERO</span> it postpones his lethal goal. This guy is just pursuing happiness.  </li>
+  </ul>		
+  <p> Two enemy modes  </p>
+  <ul class="listleft">
+	  <li> PATROL mode (duration: 8s): the enemies follow predefined paths.</li>
+	  <li> CHASE mode (duration: 15s): the enemies behave according to their personality.</li>
+  </ul>	  	   
+  </div>
+</div>  	  
+  <div class="box">
+	  <div class="title1"> Game variants and rarity</div>
+	  <div class="cnt"> There exists 1013 CHRZ tokens: 1000 tokens have been procedurally generated using a subset of the unicode emojis. The remaining 13 tokens are special 1/1 tokens where graphical elements (such as enemies, hero, power-ups) have been manually selected according to a specific game theme. Tokens are classified in 13 game variants. Variants have different rarity levels as shown below.
+		  <table>
+			  <tr><td><img src="./img/classic-small.png"></td>
+				  <td>
+			          <ul class="info"> <li> Variant name: Classic </li>
+						   <li> Abundance: 201 tokens </li>
+						   <li> Special 1/1: Tom and Jerries 
+			  	              <br>&#x1F63A; &#x1F63C; &#x1F63E; &#x1F63B; VS &#x1F42D;</li>
+					  </ul>	   
+				  </td>
+			  </tr>
+			  <tr><td><img src="./img/monkey-small.png"></td>
+				  <td>
+			          <ul class="info"> <li> Variant: Monkey </li>
+						   <li> Abundance: 101 tokens </li>
+						   <li> Special 1/1: Monkey business 
+						   <br>&#x1F435; &#x1F64A; &#x1F649; &#x1F648; VS &#x1F42F;</li>
+					  </ul>	   
+				  </td>
+			  </tr>
+			  <tr><td><img src="./img/bone-small.png"></td>
+				  <td>
+			          <ul class="info"> <li> Variant: Bone </li>
+						   <li> Abundance: 101 tokens </li>
+						   <li> Special 1/1: Man's best friend 
+						   <br>&#x1F46E; &#x1F939; &#x1F575; &#x1F477; VS &#x1F436;</li>
+					  </ul>	   
+				  </td>
+			  </tr>
+			  <tr><td><img src="./img/manhattan-small.png"></td>
+				  <td>
+			          <ul class="info"> <li> Variant: Manhattan </li>
+						   <li> Abundance: 101 tokens </li>
+						   <li> Special 1/1: You talkin' to me? 
+						   <br>&#x1F692; &#x1F691; &#x1F69B; &#x1F68C; VS &#x1F696;</li>
+					  </ul>	   
+				  </td>
+			  </tr>
+			  <tr><td><img src="./img/cumulo1-small.png"></td>
+				  <td>
+			          <ul class="info"> <li> Variant: Cumulonimbus </li>
+						   <li> Abundance: 81 tokens </li>
+						   <li> Special 1/1: Weather forecast 
+						   <br>&#x1F325; &#x1F327; &#x1F329; &#x1F328; VS &#x1F31E;</li>
+					  </ul>	   
+				  </td>
+			  </tr>
+			  <tr><td><img src="./img/segments-small.png"></td>
+				  <td>
+			          <ul class="info"> <li> Variant: Segments </li>
+						   <li> Abundance: 81 tokens </li>
+						   <li> Special 1/1: Run, baby, run! 
+						   <br>&#x1F474; &#x1F475; &#x1F469; &#x1F9D4; VS &#x1F47C;</li>
+					  </ul>	   
+				  </td>
+			  </tr>
+			  <tr><td><img src="./img/jungle-small.png"></td>
+				  <td>
+			          <ul class="info"> <li> Variant: Jungle </li>
+						   <li> Abundance: 71 tokens </li>
+						   <li> Special 1/1: One zombie vs multiple plants 
+						   <br>&#x1F335; &#x1F33B; &#x1F334; &#x1F333; VS &#x1F9DF;</li>
+					  </ul>	   
+				  </td>
+			  </tr>
+			  <tr><td><img src="./img/ghost-small.png"></td>
+				  <td>
+			          <ul class="info"> <li> Variant: Ghost </li>
+						   <li> Abundance: 71 tokens </li>
+						   <li> Special 1/1: My beloved Drascula! 
+						   <br>&#x1f475; &#x1f469; &#x1f474; &#x1f9d4; VS &#x1F9DB;</li>
+					  </ul>	   
+				  </td>
+			  </tr>
+			  <tr><td><img src="./img/binary-small.png"></td>
+				  <td>
+			          <ul class="info"> <li> Variant: Binary </li>
+						   <li> Abundance: 51 tokens </li>
+						   <li> Special 1/1: Welcome to the matrix 
+						   <br>&#x1F41B; &#x1F41D; &#x1F41E; &#x1FAB1; VS &#x1F469;&#x200D;&#x1F4BB;</li>
+					  </ul>	   
+				  </td>
+			  </tr>
+			  <tr><td><img src="./img/invader-small.png"></td>
+				  <td>
+			          <ul class="info"> <li> Variant: Invaders </li>
+						   <li> Abundance: 51 tokens </li>
+						   <li> Special 1/1: They're among us! 
+						   <br>&#129489;&#8205;&#127806; &#129489;&#8205;&#128295; &#128104;&#8205;&#128188;
+						    &#128104;&#8205;&#127908; VS &#128103;</li>
+					  </ul>	   
+				  </td>
+			  </tr>
+			  <tr><td><img src="./img/frog-small.png"></td>
+				  <td>
+			          <ul class="info"> <li> Variant: Ceratophrys </li>
+						   <li> Abundance: 41 tokens </li>
+						   <li> Special 1/1: King of the pond 
+						   <br>&#128032; &#128033; &#128031; &#128010; VS &#128056;</li>
+					  </ul>	   
+				  </td>
+			  </tr>
+			  <tr><td><img src="./img/spaceship-small.png"></td>
+				  <td>
+			          <ul class="info"> <li> Variant: Spaceship </li>
+						   <li> Abundance: 41 tokens </li>
+						   <li> Special 1/1: Moonboy 
+						   <br>&#127765; &#127765; &#127764; &#127766; VS &#129489;&#8205;&#128640;</li>
+					  </ul>	   
+				  </td>
+			  </tr>
+			  <tr><td><img src="./img/temple-small.png"></td>
+				  <td>
+			          <ul class="info"> <li> Variant: Temple </li>
+						   <li> Abundance: 21 tokens </li>
+						   <li> Special 1/1: Ralph Hinkley  vs Superhero squad 
+						   <br>&#129464;&#8205;&#9794;&#65039; &#129465;&#8205;&#9794;&#65039; &#129464;&#8205;&#9792;&#65039;  &#129465;&#8205;&#9792;&#65039;  VS &#129489;&#8205;&#129457;</li>
+					  </ul>	   
+				  </td>
+			  </tr>
+		  </table>
+	  
+	  </div>	  
+ </div>	  
+
+</div>	
+<script>
+   var canvas;
+   var bg;
+   var ctx;
+   var ratio;
+   var csize;
+   var size;
+   var gamez;
+   var id=null;
+  
+   function random(l,u){
+     return l+Math.floor(Math.random()*(u-l+1));
+   }
+   
+   
+   
+   function init(){
+	   window.removeEventListener("resize",winResize);
+	   canvas = document.getElementById('board');
+	
+	   
+	   canvas.width = window.innerWidth;
+	   canvas.height = canvas.width/5;
+	   ctx = canvas.getContext("2d");
+	   size=canvas.height/10;
+	   gamez = createText("chrz");
+	   window.addEventListener("resize",winResize);
+	   id=requestAnimationFrame(animate);   
+      }
+      
+	 var now,last=0,dt,playdt=0; 
+	 function animate(){
+		 
+	  ctx.clearRect(0,0,csize,csize);
+      now = performance.now();
+      dt = (now -last)/1000;
+      last = now;
+      playdt += dt;
+	  drawBanner();
+	  id=requestAnimationFrame(animate);
+	 }  
+   var drawRectangle = function(x, y, w, h, border){
+        ctx.beginPath();
+        ctx.moveTo(x+border, y);
+        ctx.lineTo(x+w-border, y);
+        ctx.quadraticCurveTo(x+w-border, y, x+w, y+border);
+        ctx.lineTo(x+w, y+h-border);
+        ctx.quadraticCurveTo(x+w, y+h-border, x+w-border, y+h);
+        ctx.lineTo(x+border, y+h);
+        ctx.quadraticCurveTo(x+border, y+h, x, y+h-border);
+        ctx.lineTo(x, y+border);
+        ctx.quadraticCurveTo(x, y+border, x+border, y);
+        ctx.closePath();
+        ctx.stroke();
+    }
+	function winResize(){cancelAnimationFrame(id);init();}
+    var neonRect = function(x,y,w,h,r,g,b,m){
+          ctx.shadowColor = "rgb("+r+","+g+","+b+")";
+          ctx.strokeStyle= "rgba("+r+","+g+","+b+",0.6)";
+          ctx.lineWidth=6*m;
+          drawRectangle(x,y,w,h,1);
+          ctx.strokeStyle= "rgba("+r+","+g+","+b+",0.6)";
+          ctx.lineWidth=4*m;
+          drawRectangle(x,y,w,h,1);
+          ctx.strokeStyle= "rgba("+r+","+g+","+b+",0.6)";
+          ctx.lineWidth=3*m;
+          drawRectangle(x,y,w,h,1);
+          ctx.strokeStyle= "rgba("+r+","+g+","+b+",0.6)";
+          ctx.lineWidth=2*m;
+          drawRectangle(x,y,w,h,1);
+          ctx.strokeStyle= '#fff';
+          ctx.lineWidth=1.5*m;
+          drawRectangle(x,y,w,h,1);
+    };
+
+    function letter(c){
+	 switch(c){
+		 
+	
+		 case 'c': return [[0,1,1,1,1],
+		                   [1,0,0,0,0],
+						   [1,0,0,0,0],
+						   [1,0,0,0,0],
+						   [1,0,0,0,0],
+						   [1,0,0,0,0],
+						   [0,1,1,1,1]];
+		
+		 				   
+					   
+		
+		 case 'h': return [[1,0,0,0,1],
+		                   [1,0,0,0,1],
+		                   [1,0,0,0,1],
+		                   [1,1,1,1,1],
+		                   [1,0,0,0,1],
+		                   [1,0,0,0,1],
+		 				   [1,0,0,0,1]];
+		
+						   
+				   
+		 case 'r': return [[1,1,1,1,0],
+		                   [1,0,0,0,1],
+		                   [1,0,0,0,1],
+		                   [1,1,1,1,0],
+		                   [1,0,0,0,1],
+		                   [1,0,0,0,1],
+		 				   [1,0,0,0,1]];
+		 					   
+						   				   
+						   
+		 case 'z': return [[1,1,1,1,1],
+		                   [0,0,0,0,1],
+		                   [0,0,0,1,0],
+		                   [0,0,1,0,0],
+		                   [0,1,0,0,0],
+		                   [1,0,0,0,0],
+		 				   [1,1,1,1,1]];				   
+						   			   
+          			   
+	 }
+ }
+		                     
+	 
+ function createText(s){
+	 var txt = [];
+	 var cmat = [];
+	 
+	 
+	 for(var i=0;i<s.length;i++)
+		 cmat[i] = letter(s[i]);
+	 
+	 for(var i=0;i<cmat[0].length;i++){
+		 var aux =[];
+		 for(var j=0;j<s.length;j++){
+		    aux = aux.concat(cmat[j][i].concat([0]))
+	     }
+		 txt.push(aux);
+	 }
+	 return txt;
+	 
+ }	
+ var colors=[{r:243,g:243,b:21},{r:193,g:253,b:51},{r:255,g:153,b:51},{r:252,g:90,b:184},{r:13,g:213,b:252},{r:13,g:50,b:252}];
+ function draw(x,y,txt,size){
+	 var color;
+  for(var i=0;i<txt.length;i++){
+	  for(var j=0;j<txt[0].length;j++){
+		  if (txt[i][j] != 0){	
+			color=Math.random()*(colors.length-1)|0;
+			neonRect(j*size+x,i*size+y,size-5,size-5,colors[color].r,colors[color].g,colors[color].b,size/20);   
+	      }
+	  }
+  }	
+ }
+ function random(l,u){
+   return l+Math.floor(Math.random()*(u-l+1));
+ }
+
+
+ function drawBanner(){
+	draw((canvas.width-size*gamez[0].length)/2+size/2,2*size,gamez,size);
+  }
+</script>
+</body>	
+</html>
