@@ -7,6 +7,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 <style>
+	.loop {margin:auto auto;font: 40px VT323; color:rgb(243,243,21);margin-bottom:20px;width:80%;
+		    animation: color-change 1s infinite;}
+	@keyframes color-change {
+			  0% { color: #3ff; }
+			  50% { color: #9999FF; }
+			  100% { color: #3ff; }
+	}
 	.wrapper {
 	  display: grid;
 	  grid-template-columns: auto;
@@ -48,15 +55,13 @@
 <body style="margin:0;background:#000;" onload="init()">	
 <canvas style="background:#000;padding:2px;margin:auto;display:block;" id="board"></canvas>	  	
 <div class="desc" style="color:white;font: 40px VT323; text-align:center;"> Retrogaming on the Cardano Blockchain<br>by <a class="goc" href="https://twitter.com/gamezonchain">@gamezonchain</a>
-<p> <span style="color:#f6f">Mint date:</span> June 27th, 13.00pm UTC<br>
-	<span style="color:#ff8000">Price:</span> 30 ADA
-</p>
-</div>
+	<p> <span style="color:red;">PolicyID:</span> 4864e4cf3f7e7fd2318b3bb4a7060665278a47fc4a6216c55dcbbeb0</p>
+	<p class="loop"><a href="#mint" class="loop">Click to mint now!</a></p> </div>
 
 <div class="wrapper">
   <div class="box">
 	  <div class="title"> What is CHRZ?</div>
-	  <div class="cnt"> CHRZ is a retrogame that fully lives on the Cardano blockchain without the need of resorting to external hosting services (e.g., IPFS, Arweave). Just 16kb of metadata: an <a  href="https://en.wikipedia.org/wiki/Impossible_bottle">impossible bottle</a>, crafted with love and passion for coding, that includes animations, synthesized sound effects, touch and keyboard controls, and -last but not least- a lot of funny Unicode characters. 
+	  <div class="cnt"> CHRZ is a retrogame that fully lives on the Cardano blockchain without the need of resorting to external hosting services (e.g., IPFS, arweave). Just 16kb of metadata: an <a  href="https://en.wikipedia.org/wiki/Impossible_bottle">impossible bottle</a>, crafted with love and passion for coding, that includes animations, synthesized sound effects, touch and keyboard controls, and -last but not least- a lot of funny Unicode characters. 
 	  <video style="display:block; margin:auto" width="80%" autoplay muted loop controls>
 		  <source src="./chrzvideo.mp4" type="video/mp4">
 	  </video>	  
@@ -73,11 +78,11 @@
 	  <li> <span class="prof">THE PROFESSOR</span> uses complex formulas to try to trap <span class="hero">HERO</span>. Nonetheless his strategy is often ineffective.</li>
 	  <li> <span class="happy">HAPPY STONER</span> is not very hostile:  when close enough to <span class="hero">HERO</span> it postpones his lethal goal. This guy is just pursuing happiness.  </li>
   </ul>		
-  <p> TWO ENEMY MODES  </p>
+  <p> TWO ENEMY MODES </p>
   <ul class="listleft">
 	  <li> PATROL mode (duration: 8s): the enemies follow predefined paths.</li>
 	  <li> CHASE mode (duration: 15s): the enemies behave according to their personality.</li>
-  </ul>	  	   
+  </ul>	  
   <p> BONUS SYSTEM </p>
   <p> The first bonus item appears after 8s... easy. The remaining items appear every 23s (approximately). 
 	  Be quick, they disappear after 4s.</p>
@@ -87,9 +92,9 @@
 	     <li> 🍒  1000 points </li>
 	     <li> 🍓  2000 points </li>
 	     <li> 💎  3400 points </li>
-      </ul>
+      </ul>	   
   </div>
-</div>  
+</div>  	
 <a name="how"></a>	 
   <div class="box">
 	  <div class="title4"> How to beat the game</div>
@@ -110,10 +115,10 @@
 		  
 		  
 	  </div>
-  </div> 
+  </div>   
   <div class="box">
 	  <div class="title1"> Game variants and rarity</div>
-	  <div class="cnt"> There exist 1013 CHRZ tokens: 1000 tokens have been procedurally generated using a subset of the unicode emojis. The remaining 13 tokens are special 1/1 tokens where graphical elements (such as enemies, hero, power-ups) have been manually selected according to a specific game theme. Tokens are classified in 13 game variants. Variants have different rarity levels as shown below.
+	  <div class="cnt"> There exists 1013 CHRZ tokens: 1000 tokens have been procedurally generated using a subset of the unicode emojis. The remaining 13 tokens are special 1/1 tokens where graphical elements (such as enemies, hero, power-ups) have been manually selected according to a specific game theme. Tokens are classified in 13 game variants. Variants have different rarity levels as shown below.
 		  <table>
 			  <tr><td><img src="./img/classic-small.png"></td>
 				  <td>
@@ -220,7 +225,7 @@
 			          <ul class="info"> <li> Variant: Spaceship </li>
 						   <li> Abundance: 41 tokens </li>
 						   <li> Special 1/1: Moonboy 
-						   <br>&#127765; &#127765; &#127764; &#127766; VS &#x1F468;&#x200D;&#x1F680;</li>
+						   <br>&#127765; &#x1F313; &#127764; &#127766; VS &#x1F468;&#x200D;&#x1F680;</li>
 					  </ul>	   
 				  </td>
 			  </tr>
@@ -237,7 +242,17 @@
 	  
 	  </div>	  
  </div>	  
-
+ <a name="mint"></a> 
+  <div class="box">
+	  <div class="title3"> How to mint</div>
+	  <div class="cnt"> <p>Collect 30 Ada, unlock the payment gateway and mint your token. 
+		   It won't be easy, your rational part will try to abort your mission :-)</p>
+		   <p>Press any key to start. Use arrow keys to control hero movements.  </p>
+		   <p>Are you ready?</p>
+		   <a class="play" href="https://chrz.netlify.app/play2m1nt.html"> Play to mint </a> 
+		   <br><br><br><br>
+	  </div>	
+  </div>
 </div>	
 <script>
    var canvas;
