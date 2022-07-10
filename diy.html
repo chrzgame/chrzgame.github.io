@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>	
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<style>
+	.wrapper {
+	  display: grid;
+	  grid-template-columns: auto;
+	  grid-gap: 10px;
+	  
+	  padding: 10px;
+	}
+	.box {
+	  text-align: center;
+	}
+	.title {margin:auto auto;font: 40px VT323; color:rgb(243,243,21);margin-bottom:20px;width:80%;
+		    animation: color-change 1s infinite;}
+	@keyframes color-change {
+			  0% { color: red; }
+			  25% { color: orange; }
+			  50% { color: yellow; }
+			  75% { color: orange; }
+			  100% { color: red; }
+	}		
+	.title1 {margin:auto auto;font: 40px VT323; color:rgb(252,90,184);margin-bottom:20px;width:80%;}
+	.title2 {margin:auto auto;font: 40px VT323; color:rgb(13,50,252);margin-bottom:20px;width:80%;}
+	.title3 {margin:auto auto;font: 40px VT323; color:rgb(13,213,252);margin-bottom:20px;width:80%;}
+	.title4 {margin:auto auto;font: 40px VT323; color:yellow;margin-bottom:20px;width:80%;}
+	.title5 {margin:auto auto;font: 40px VT323; color:red;margin-bottom:20px;width:80%;}
+	.cnt {margin:auto auto;font: 30px VT323; color:white;width:80%;}
+	.desc {margin:auto auto; width:80%; border-bottom: white 2px solid;padding-bottom:10px;}
+	.box {padding:10px 0;}
+	.hero {color:yellow;}
+	.shadow {color:red;}
+	.ambush{color:brown;}
+	.prof{color:pink;}
+	.happy{color:purple;}
+	.tablemargin{margin-bottom:3px;}
+	
+	video {padding:20px;}
+	a {text-decoration:none;}
+	a:link {color:#0F6;}
+	a:visited {color:#0F6;}
+	a:hover {color:#fb0;}
+	table{margin:auto;padding-top:50px;}
+	.info {font: 20px VT323; color:white;text-align:left;}
+	.listleft {text-align:left;}
+	.play{border:solid green 3px ;border-radius:10px;padding:5px;}
+	
+</style>	
+</head>
+<body style="margin:0;background:#000;" onload="init()">	
+<canvas style="background:#000;padding:2px;margin:auto;display:block;" id="board"></canvas>	  	
+<div class="desc" style="color:white;font: 40px VT323; text-align:center;"> A quick and dirty tutorial to change CHRZ emojis<br>by <a class="goc" href="https://twitter.com/gamezonchain">@gamezonchain</a></div>
+
+<div class="wrapper">
+  <div class="box">
+	  <div class="title3"> Step 1  </div>
+	  <div class="cnt">
+		 Access your CHRZ NFT via <a href="https://pool.pm/">pool.pm</a>, and click 
+		 on the mint date.  
+		 If you do not have any CHRZ, you can use mine by clicking 
+		 <a href="https://pool.pm/asset1m34y7vhg0mjxtjfca9eadmmtu0t9txcfzyaa9e">
+			 CHRZ #91
+		 </a><br>	 
+		 <img src="img/first.png" width="60%">	  
+	  </div>
+  </div>
+  <div class="box">
+	  <div class="title2"> Step 2 </div>
+	  <div class="cnt">
+		 Step 1 allows you to enter the pool.pm testing environment, where you can view and edit NFT metadata.
+		 Note that your changes are immediately applied and rendered (cool!). Now, find all the occurrences of the string 
+		 "CodePoint" in the metadata code. 
+		 <br><br>
+		 <img src="img/second.png" width="80%">	   	  
+	  </div>
+  </div>
+  <div class="box">
+	  <div class="title1"> Step 3 </div>
+	  <div class="cnt">
+		 String.fromCodePoint(x), with x a number (in decimal or hex representation), is the JS method I used
+		 to include unicode emojis into the game. By changing x with a valid emoji code, you will change any emoji
+		 in the game. A complete list of emoji codes is available at <a href="https://unicode.org/emoji/charts/full-emoji-list.html">the unicode.org web site</a>.
+ 		 <br><br>
+		 <img src="img/third.png" width="80%">	   	  
+	  </div>
+  </div>
+  <div class="box">
+	  <div class="title4"> Step 4 </div>
+	  <div class="cnt">
+		 Change the values of the String.fromCodePoint calls in the code to introduce 
+		 your favorite emojis in the game. You can change hero, enemies, power-ups, etc.
+		 For instance, in BRKZ #91, change <br><br>
+		 <div>ia=String.fromCodePoint(<span style="color:yellow">0x1F975</span>)</div>
+		 by
+		 <div>ia=String.fromCodePoint(<span style="color:brown">0x1F4A9</span>)</div><br>
+		 and let a new hero enter the game! :)	   	  
+	  </div>
+  </div>
+  <div class="box">
+	  <div class="title5"> Step 5 </div>
+	  <div class="cnt">
+		 Experiment, have fun and customize your game! Take a picture or a small video of your customization (in full screen mode) and post it on Twitter to enter the <span style="color:orange">DIY - Pimp your CHRZ</span> contest.
+	  </div>
+  </div>
+</div>  	    	    
+  
+<script>
+   var canvas;
+   var bg;
+   var ctx;
+   var ratio;
+   var csize;
+   var size;
+   var gamez;
+   var id=null;
+  
+   function random(l,u){
+     return l+Math.floor(Math.random()*(u-l+1));
+   }
+   
+   
+   
+   function init(){
+	   window.removeEventListener("resize",winResize);
+	   canvas = document.getElementById('board');
+	
+	   
+	   canvas.width = window.innerWidth;
+	   canvas.height = canvas.width/5;
+	   ctx = canvas.getContext("2d");
+	   size=canvas.height/10;
+	   gamez = createText("chrz");
+	   window.addEventListener("resize",winResize);
+	   id=requestAnimationFrame(animate);   
+      }
+      
+	 var now,last=0,dt,playdt=0; 
+	 function animate(){
+		 
+	  ctx.clearRect(0,0,csize,csize);
+      now = performance.now();
+      dt = (now -last)/1000;
+      last = now;
+      playdt += dt;
+	  drawBanner();
+	  id=requestAnimationFrame(animate);
+	 }  
+   var drawRectangle = function(x, y, w, h, border){
+        ctx.beginPath();
+        ctx.moveTo(x+border, y);
+        ctx.lineTo(x+w-border, y);
+        ctx.quadraticCurveTo(x+w-border, y, x+w, y+border);
+        ctx.lineTo(x+w, y+h-border);
+        ctx.quadraticCurveTo(x+w, y+h-border, x+w-border, y+h);
+        ctx.lineTo(x+border, y+h);
+        ctx.quadraticCurveTo(x+border, y+h, x, y+h-border);
+        ctx.lineTo(x, y+border);
+        ctx.quadraticCurveTo(x, y+border, x+border, y);
+        ctx.closePath();
+        ctx.stroke();
+    }
+	function winResize(){cancelAnimationFrame(id);init();}
+    var neonRect = function(x,y,w,h,r,g,b,m){
+          ctx.shadowColor = "rgb("+r+","+g+","+b+")";
+          ctx.strokeStyle= "rgba("+r+","+g+","+b+",0.6)";
+          ctx.lineWidth=6*m;
+          drawRectangle(x,y,w,h,1);
+          ctx.strokeStyle= "rgba("+r+","+g+","+b+",0.6)";
+          ctx.lineWidth=4*m;
+          drawRectangle(x,y,w,h,1);
+          ctx.strokeStyle= "rgba("+r+","+g+","+b+",0.6)";
+          ctx.lineWidth=3*m;
+          drawRectangle(x,y,w,h,1);
+          ctx.strokeStyle= "rgba("+r+","+g+","+b+",0.6)";
+          ctx.lineWidth=2*m;
+          drawRectangle(x,y,w,h,1);
+          ctx.strokeStyle= '#fff';
+          ctx.lineWidth=1.5*m;
+          drawRectangle(x,y,w,h,1);
+    };
+
+    function letter(c){
+	 switch(c){
+		 
+	
+		 case 'c': return [[0,1,1,1,1],
+		                   [1,0,0,0,0],
+						   [1,0,0,0,0],
+						   [1,0,0,0,0],
+						   [1,0,0,0,0],
+						   [1,0,0,0,0],
+						   [0,1,1,1,1]];
+		
+		 				   
+					   
+		
+		 case 'h': return [[1,0,0,0,1],
+		                   [1,0,0,0,1],
+		                   [1,0,0,0,1],
+		                   [1,1,1,1,1],
+		                   [1,0,0,0,1],
+		                   [1,0,0,0,1],
+		 				   [1,0,0,0,1]];
+		
+						   
+				   
+		 case 'r': return [[1,1,1,1,0],
+		                   [1,0,0,0,1],
+		                   [1,0,0,0,1],
+		                   [1,1,1,1,0],
+		                   [1,0,0,0,1],
+		                   [1,0,0,0,1],
+		 				   [1,0,0,0,1]];
+		 					   
+						   				   
+						   
+		 case 'z': return [[1,1,1,1,1],
+		                   [0,0,0,0,1],
+		                   [0,0,0,1,0],
+		                   [0,0,1,0,0],
+		                   [0,1,0,0,0],
+		                   [1,0,0,0,0],
+		 				   [1,1,1,1,1]];				   
+						   			   
+          			   
+	 }
+ }
+		                     
+	 
+ function createText(s){
+	 var txt = [];
+	 var cmat = [];
+	 
+	 
+	 for(var i=0;i<s.length;i++)
+		 cmat[i] = letter(s[i]);
+	 
+	 for(var i=0;i<cmat[0].length;i++){
+		 var aux =[];
+		 for(var j=0;j<s.length;j++){
+		    aux = aux.concat(cmat[j][i].concat([0]))
+	     }
+		 txt.push(aux);
+	 }
+	 return txt;
+	 
+ }	
+ var colors=[{r:243,g:243,b:21},{r:193,g:253,b:51},{r:255,g:153,b:51},{r:252,g:90,b:184},{r:13,g:213,b:252},{r:13,g:50,b:252}];
+ function draw(x,y,txt,size){
+	 var color;
+  for(var i=0;i<txt.length;i++){
+	  for(var j=0;j<txt[0].length;j++){
+		  if (txt[i][j] != 0){	
+			color=Math.random()*(colors.length-1)|0;
+			neonRect(j*size+x,i*size+y,size-5,size-5,colors[color].r,colors[color].g,colors[color].b,size/20);   
+	      }
+	  }
+  }	
+ }
+ function random(l,u){
+   return l+Math.floor(Math.random()*(u-l+1));
+ }
+
+
+ function drawBanner(){
+	draw((canvas.width-size*gamez[0].length)/2+size/2,2*size,gamez,size);
+  }
+  
+</script>
+
+</body>	
+</html>
